@@ -3,13 +3,13 @@ import React from "react";
 const Signup = () => {
   return (
     <div>
-      <div className="flex bg-black">
-        <div className="ml-20 h-full col-span-1 grid grid-cols-1 pl-96">
-          <div className="start bg-amber-400 w-4/5 border-bg-black rounded-2xl">
-            <div className="card p-8 m-5 border-2 bg-amber-300 rounded-2xl">
+      <h1 className="signup text-3xl font-bold">Signup Here:</h1>
+      <div className="flex content-center">
+        <div className="ml-64 p-5 h-full col-span-1 grid grid-cols-1 pl-80">
+          <div className="start bg-red-400 w-4/5 border-bg-black rounded-2xl">
+            <div className="card p-8 m-5 border-2 bg-red-300 rounded-2xl">
               <form className="form login-form">
                 <div className="form-group">
-                  <p>Contact Me!</p>
                   <label className="form-label" htmlFor="fullName">
                     Full Name:
                   </label>

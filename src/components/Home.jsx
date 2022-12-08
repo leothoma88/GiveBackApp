@@ -4,9 +4,21 @@ const Home = () => {
   return (
     <div>
     <main>
-        <div classNameName="flex" alt="middlesections">
-            <div className="flex-1 h-96 mt-20 ml-[50px] w-1/2 h-[30rem] bg-white"></div>
-            <div className="flex-1 h-96 mt-20 m-[50px] w-1/2 h-[30rem] bg-white"></div>
+        <div className="flex" alt="middlesections">
+            <div className="font-bold px-8 drop-shadow-lg flex-1 h-96 mt-20 ml-[50px] w-1/2 h-[30rem] bg-white"><br/><br/><br/><br/>This is the stuff that people came to see <br/><br/><br/> You know the stuff that we talk about. We do the things that people are scared to do.<br/><br/> We put our lifes on the line everyday.<br/><br/>We save puppies, cows, birds,anything you can think of.<br/><br/>We believe in the world and so should to<br/><br/></div>
+            <div className="drop-shadow-lg flex-1 h-96 mt-20 m-[50px] w-1/2 h-[30rem] ">
+            <div className="my-3 grid grid-cols-2 gap-4">
+                <div className='rounded-md border-slate-400 px-9 py-10 bg-white'>Organization 1</div>
+                <div className='rounded-md px-9 py-10 bg-white'>Organization 1</div>
+                <div className='rounded-md px-9 py-10 bg-white'>Organization 1</div>
+                <div className='rounded-md px-9 py-10 bg-white'>Organization 1</div>
+                <div className='rounded-md px-9 py-10 bg-white'>Organization 1</div>
+                <div className='rounded-md px-9 py-10 bg-white'>Organization 1</div>
+                <div className='rounded-md px-9 py-10 bg-white'>Organization 1</div>
+                <div className='rounded-md px-9 py-10 bg-white'>Organization 1</div>
+                
+        </div> 
+            </div>
         </div> 
         <div className="flex">
             <p className="text-xl font-bold text-center flex-1">Summary</p>
@@ -33,6 +45,7 @@ const Home = () => {
                 </form>
             </div>
           </section>
+          
         
     </main>   
     </div>

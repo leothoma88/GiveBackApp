@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {About,Cards,Donation,Footer,Header,Login,Main,Nav,Profile,Signup} from "./components"
+import {About,Cards,Donation,Footer,Header,Login,Home,Nav,Profile,Signup} from "./components"
 import {Routes,Route,Navigate,withRouter} from 'react-router-dom'
 
 
@@ -14,7 +14,7 @@ function App() {
           element= {<About/>}>
           </Route>
           <Route path="/" 
-          element= {<Main/>}>
+          element= {<Home/>}>
           </Route>
           <Route path="/donation" element= {<Donation/>}>
 

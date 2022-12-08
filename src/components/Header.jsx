@@ -1,8 +1,12 @@
 import React from 'react'
+import Nav from './Nav'
 
 const Header = () => {
   return (
-    <div>Header</div>
+    <div>
+    <div className="h-64 bg-teal-500"></div>
+        <Nav/>
+    </div>
   )
 }
 

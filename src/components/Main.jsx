@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import {About,Cards,Donation,Footer,Header,Login,Home,Profile,Signup} from "./components"
 import {Routes,Route,Navigate,withRouter} from 'react-router-dom'
 

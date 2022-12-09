@@ -15,7 +15,7 @@ const Login = () => {
                     Email Address:
                   </label>
                   <input
-                    className="form-input form-control"
+                    className="w-2 form-input form-control"
                     type="text"
                     id="email"
                   />

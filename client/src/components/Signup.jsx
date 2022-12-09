@@ -4,8 +4,8 @@ const Signup = () => {
   return (
     <div>
       <h1 className="signup text-3xl font-bold">Signup Here:</h1>
-      <div className="flex content-center">
-        <div className="ml-64 p-5 h-full col-span-1 grid grid-cols-1 pl-80">
+      <div className="flex ml-20 place-content-center">
+        <div className="flex p-5">
           <div className="start bg-red-400 w-4/5 border-bg-black rounded-2xl">
             <div className="card p-8 m-5 border-2 bg-red-300 rounded-2xl">
               <form className="form login-form">

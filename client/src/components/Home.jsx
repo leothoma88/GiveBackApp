@@ -5,7 +5,7 @@ const Home = () => {
     <div>
     <main>
     <div className="flex">
-            <p className="text-xl mt-[50px] font-bold text-center flex-1">Organizations</p>
+            <p className="text-white text-xl mt-[50px] font-bold text-center flex-1">Organizations</p>
         </div>
         <div className="flex" alt="middlesections">
             <div className="drop-shadow-lg flex-auto mt-20 m-[50px]  ">

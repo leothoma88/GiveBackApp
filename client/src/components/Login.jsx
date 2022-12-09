@@ -15,7 +15,7 @@ const Login = () => {
                     Email Address:
                   </label>
                   <input
-                    className="w-2 form-input form-control"
+                    className="block w-full place-content-center form-input form-control"
                     type="text"
                     id="email"
                   />
@@ -23,7 +23,7 @@ const Login = () => {
                 <div className="form-group">
                   <label htmlFor="passwordInput">Password:</label>
                   <input
-                    className="form-input form-control"
+                    className="block w-full form-input form-control"
                     type="password"
                     id="passwordInput"
                   />

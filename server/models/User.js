@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 
 // import schema from Donation.js
 const donationSchema = require("./Donation");
-
+//user
 const userSchema = new Schema({
   username: {
     type: String,

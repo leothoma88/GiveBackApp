@@ -1,7 +1,48 @@
-import React from "react";
-import {Link} from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { LOGIN_USER } from "../utils/mutations";
 
-const Login = () => {
+import Auth from "../utils/auth";
+import { useMutation } from "@apollo/client";
+
+const LoginForm = () => {
+  const [userFormData, setUserFormData] = useState({ email: "", password: "" });
+  const [validated] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [login, { error, data }] = useMutation(LOGIN_USER);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserFormData({ ...userFormData, [name]: value });
+  };
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    // check if form has everything (as per react-bootstrap docs)
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    try {
+      const { data } = await login({
+        variables: { ...userFormData },
+      });
+
+      Auth.login(data.login.token);
+    } catch (err) {
+      console.error(err);
+      setShowAlert(true);
+    }
+
+    setUserFormData({
+      username: "",
+      email: "",
+      password: "",
+    });
+  };
+
   return (
     <div>
       <h1 className="text-white text-3xl font-bold"> Login:</h1>
@@ -15,21 +56,26 @@ const Login = () => {
                     Email Address:
                   </label>
                   <input
+                    onChange={handleInputChange}
                     className="block w-full place-content-center form-input form-control"
                     type="text"
+                    name="email"
                     id="email"
                   />
                 </div>
                 <div className="form-group">
                   <label htmlFor="passwordInput">Password:</label>
                   <input
+                    onChange={handleInputChange}
                     className="block w-full form-input form-control"
                     type="password"
+                    name="password"
                     id="passwordInput"
                   />
                 </div>
                 <div className="BtnSpace">
                   <button
+                    onClick={handleFormSubmit}
                     className="loginBtn btn-primary border-2 bg-white p-3 m-5 rounded-2xl hover:bg-amber-500"
                     type="login"
                   >
@@ -42,11 +88,15 @@ const Login = () => {
         </div>
       </div>
       <div className="my-6">
-      <Link className=" loginBtn btn-primary border-2 bg-white p-3 m-5 rounded-2xl hover:bg-amber-500" to='/signup'>Create new account</Link>
+        <Link
+          className=" loginBtn btn-primary border-2 bg-white p-3 m-5 rounded-2xl hover:bg-amber-500"
+          to="/signup"
+        >
+          Create new account
+        </Link>
       </div>
-      
     </div>
   );
 };
 
-export default Login;
+export default LoginForm;

@@ -1,11 +1,10 @@
 const { Schema } = require("mongoose");
 
 const donationSchema = new Schema({
-  charity: [
-    {
-      type: String,
-    },
-  ],
+  charityName: {
+    type: String,
+    required: true,
+  },
   description: {
     type: String,
     required: true,
@@ -19,10 +18,6 @@ const donationSchema = new Schema({
   },
   link: {
     type: String,
-  },
-  charityName: {
-    type: String,
-    required: true,
   },
 });
 

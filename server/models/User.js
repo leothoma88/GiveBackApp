@@ -4,27 +4,33 @@ const bcrypt = require("bcrypt");
 // import schema from Donation.js
 const donationSchema = require("./Donation");
 
-const userSchema = new Schema({
-  username: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    match: [/.+@.+\..+/, "Must use a valid email address"],
-  },
-  password: {
-    type: String,
-    required: true,
+const userSchema = new Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      match: [/.+@.+\..+/, "Must use a valid email address"],
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+
+    savedDonations: [donationSchema],
   },
   // set this to use virtual below
-  toJSON: {
-    virtuals: true,
-  },
-});
+  {
+    toJSON: {
+      virtuals: true,
+    },
+  }
+);
 
 // hash user password
 userSchema.pre("save", async function (next) {

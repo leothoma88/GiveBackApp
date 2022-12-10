@@ -2,8 +2,7 @@ const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
 // import schema from Donation.js
-const donationSchema = require("./Donation");
-
+const donationSchema = model('Donation').schema;
 const userSchema = new Schema(
   {
     username: {

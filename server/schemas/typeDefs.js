@@ -24,6 +24,18 @@ const typeDefs = gql`
     image: String
     link: String
   }
+  type Nonprofit {
+    id: String,
+    name: String
+    primarySlug: String
+    ein: String
+    isDisbursable: Boolean
+    description: String
+    descriptionLong: String
+    locationAddress: String
+    nteeCode: String
+  }
+  
 
   type Auth {
     token: ID!

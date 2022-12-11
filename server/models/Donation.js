@@ -1,4 +1,4 @@
-const { Schema } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 const donationSchema = new Schema({
   charityName: {
@@ -21,4 +21,6 @@ const donationSchema = new Schema({
   },
 });
 
-module.exports = donationSchema;
+const Donation = model('Donation', donationSchema);
+
+module.exports = Donation;

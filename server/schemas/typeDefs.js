@@ -24,6 +24,18 @@ const typeDefs = gql`
     image: String
     link: String
   }
+  type Nonprofit {
+    id: String,
+    name: String
+    primarySlug: String
+    ein: String
+    isDisbursable: Boolean
+    description: String
+    descriptionLong: String
+    locationAddress: String
+    nteeCode: String
+  }
+  
 
   type Auth {
     token: ID!
@@ -31,7 +43,6 @@ const typeDefs = gql`
   }
 
   type Query {
-    # Because we have the context functionality in place to check a JWT and decode its data, we can use a query that will always find and return the logged in user's data
     me: User
   }
 
@@ -46,3 +57,5 @@ const typeDefs = gql`
 `;
 
 module.exports = typeDefs;
+
+// # Because we have the context functionality in place to check a JWT and decode its data, we can use a query that will always find and return the logged in user's data

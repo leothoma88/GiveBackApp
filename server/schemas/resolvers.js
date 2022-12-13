@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
+const { User, Donation } = require("../models");
 const { signToken } = require("../utils/auth");
 const fetch = require("node-fetch");
 const resolvers = {
@@ -11,11 +11,8 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    // charity: async (_source, { id }, { dataSources }) => {
-    //   return dataSources.CharityApi.getOrg(id);
-    // },
     charity: async () => {
-      const res = await fetch(`https://partners.every.org/v0.2/nonprofit/homewardpet?apiKey=e09241525a3f961bfc6b8533dcbb38a3`);
+      const res = await fetch(`https://partners.every.org/v0.2/nonprofit/homewardpet?apiKey=`);
       const data = await res.json();
       console.log({data})
       return data.data.nonprofit;

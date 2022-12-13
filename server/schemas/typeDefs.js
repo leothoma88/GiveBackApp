@@ -1,57 +1,56 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
+type Nonprofit {
+  id: ID!,
+  name: String,
+  primarySlug: String,
+  ein: String,
+  isDisbursable: Boolean,
+  description: String,
+  descriptionLong: String,
+  locationAddress: String,
+  nteeCode: String,
+  nteeCodeMeaning: NteeCodeMeaning,
+    logoCloudinaryId: ID,
+    coverImageCloudinaryId: ID,
+    logoUrl: String,
+    coverImageUrl: String,
+    profileUrl: String
+  }
+  type NteeCodeMeaning {
+    majorCode: String,
+    majorMeaning: String,
+    decileCode: String,
+    decileMeaning: String
+  }
+  
+  type NonprofitTags {
+      id: ID!,
+      tagName: String,
+      causeCategory: String,
+      title: String,
+      tagImageCloudinaryId: String,
+      tagUrl: String,
+      tagImageUrl: String
+  }
   type User {
     _id: ID
     username: String
     email: String
-    savedDonations: [Donation]
+    savedDonations: Nonprofit
   }
-
-  type Donation {
-    _id: ID
-    charityName: String
-    description: String
-    charityId: String
-    image: String
-    link: String
-  }
-
-  input DonationInput {
-    charityName: String
-    description: String
-    charityId: String
-    image: String
-    link: String
-  }
-  type Nonprofit {
-    id: String,
-    name: String
-    primarySlug: String
-    ein: String
-    isDisbursable: Boolean
-    description: String
-    descriptionLong: String
-    locationAddress: String
-    nteeCode: String
-  }
-  
-
   type Auth {
     token: ID!
     user: User
   }
-
   type Query {
-    me: User
+    me: User,
+    charity: Nonprofit
   }
-
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-
-    saveDonation(data: DonationInput): User
-
     removeDonation(charityId: ID): User
   }
 `;

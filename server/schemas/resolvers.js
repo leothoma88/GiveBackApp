@@ -1,16 +1,25 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Donation} = require("../models");
+const { User } = require("../models");
 const { signToken } = require("../utils/auth");
-
+const fetch = require("node-fetch");
 const resolvers = {
   Query: {
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
     me: async (parent, args, context) => {
-      if (context.user) {
+      if (context.user) {push 
         return User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+    // charity: async (_source, { id }, { dataSources }) => {
+    //   return dataSources.CharityApi.getOrg(id);
+    // },
+    charity: async () => {
+      const res = await fetch(`https://partners.every.org/v0.2/nonprofit/homewardpet?apiKey=e09241525a3f961bfc6b8533dcbb38a3`);
+      const data = await res.json();
+      console.log({data})
+      return data.data.nonprofit;
+  }
   },
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
@@ -37,23 +46,23 @@ const resolvers = {
     },
 
     // Add a third argument to the resolver to access data in our `context`
-    saveDonation: async (parent, { data }, context) => {
-      // If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
-      if (context.user) {
-        return User.findOneAndUpdate(
-          { _id: context.user._id },
-          {
-            $addToSet: { savedDonations: data },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-      }
-      // If user attempts to execute this mutation and isn't logged in, throw an error
-      throw new AuthenticationError("You need to be logged in!");
-    },
+    // saveDonation: async (parent, { data }, context) => {
+    //   // If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
+    //   if (context.user) {
+    //     return User.findOneAndUpdate(
+    //       { _id: context.user._id },
+    //       {
+    //         $addToSet: { savedDonations: data },
+    //       },
+    //       {
+    //         new: true,
+    //         runValidators: true,
+    //       }
+    //     );
+    //   }
+    //   // If user attempts to execute this mutation and isn't logged in, throw an error
+    //   throw new AuthenticationError("You need to be logged in!");
+    // },
     // Set up mutation so a logged in user can only remove their profile and no one else's
 
     // Make it so a logged in user can only remove a skill from their own profile

@@ -12,11 +12,21 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
     charity: async () => {
-      const res = await fetch(`https://partners.every.org/v0.2/nonprofit/homewardpet?apiKey=`);
+      const res = await fetch(`https://partners.every.org/v0.2/nonprofit/homewardpet?apiKey=e09241525a3f961bfc6b8533dcbb38a3`);
       const data = await res.json();
       console.log({data})
       return data.data.nonprofit;
-  }
+  },
+    search: async (parent,{searchTerm},context)=> {
+      const res = await fetch (`https://partners.every.org/v0.2/search/${searchTerm}?apiKey=e09241525a3f961bfc6b8533dcbb38a3`);
+      const data = await res.json();
+      console.log(data)
+      if (data.nonprofit) {
+        return [data.nonprofit]
+      }
+      return data.nonprofits;
+
+    }
   },
   Mutation: {
     addUser: async (parent, { username, email, password }) => {

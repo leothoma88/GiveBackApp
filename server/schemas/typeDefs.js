@@ -45,8 +45,9 @@ type Nonprofit {
     user: User
   }
   type Query {
-    me: User,
+    me: User
     charity: Nonprofit
+    search(searchTerm: String!): [Nonprofit]
   }
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth

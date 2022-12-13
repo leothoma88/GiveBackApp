@@ -29,7 +29,7 @@ const Search   = ({acceptSearches, charities}) => {
              {filteredCharities.map((charity) => {
                return <Cards name={charity['name']}
                description={charity['description']}
-               logoUrl={charity['logoUrl']}/>
+               coverImageUrl={charity['coverImageUrl']}/>
              })}
            </div>
            </div>  

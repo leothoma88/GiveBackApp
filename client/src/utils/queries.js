@@ -9,3 +9,13 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_SEARCH = gql`
+  query search($searchTerm: String!) {
+    search(searchTerm: $searchTerm) {
+      name
+      description
+      coverImageUrl
+    }
+  }
+`;

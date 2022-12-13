@@ -9,7 +9,7 @@ class Cards extends Component {
   
 
   render() {
-  const{name,description,logoUrl}=this.props;
+  const{name,description,coverImageUrl}=this.props;
   // const [showModal, setShowModal] = useState(false);
   // const handleClose = () => {setShowModal(false)}
   return (
@@ -18,7 +18,7 @@ class Cards extends Component {
         <div className="relative pb-48 overflow-hidden">
           <img
             className="absolute inset-0 h-full w-full object-cover transition  hover:-translate-y-1 hover:scale-110"
-            src={logoUrl}
+            src={coverImageUrl}
             alt=""
           />
         </div>

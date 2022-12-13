@@ -1,54 +1,48 @@
-import React, { Component } from 'react';
-import Cards from './Cards';
+import React, {useState } from 'react';
 import Search from './Search'
+import { QUERY_SEARCH} from '../utils/queries'
+import { useLazyQuery } from '@apollo/client';
 
-class CharitiesBuilder extends Component {
-    constructor(props) {
-       // console.log(props,"HEY MOM")
-      super(props);
-      this.state = {
-        charities: []
-      };
-    }
-  
-    handleSearch = () => {
-        console.log("SEARCGIN!!!", {state: this.state})
-        const searchedurl = `https://partners.every.org/v0.2/search/${this.state.searchTerm}?apiKey=ba48908690c47fcc97e15a15220bcb75`
-
-      fetch(searchedurl, {
-        method: "GET",
-        headers: {
-          "Content-Type" : "application/json"
-        },
+// class CharitiesBuilder extends Component {
+//     constructor(props) {
+//       super(props);
+//       this.state = {
+//         charities: []
+//       };
+//     }
+function CharitiesBuilder() {
+   
+    const [charities,setCharities] = useState([])
+    const [search,setSearch] = useState("")
+    const[doSearch ,{loading,data}] =useLazyQuery(QUERY_SEARCH, {
+        variables: { searchTerm: search },
       })
-        .then(res => res.json())
-        .then(
-          (result) => {
-            this.setState({
-              charities: result.charitySearchResults
-            });
-          },
-        )
+    
+
+    const handleSearch = () => {
+        console.log("SEARCGIN!!!", charities)
+        
+        doSearch()
     }
 
-    acceptSearches = (searchTerm) => {
-        console.log({...this.state, searchTerm})
-        this.setState({...this.state, searchTerm})
+     const acceptSearches = (searchTerm) => {
+        console.log("Accept searches", searchTerm)
+        setSearch(searchTerm)
     }
   
-    render() {
-      const { charities } = this.state;
+    
+     
       const reducedCharities = charities.slice(0, 12)
       return (
         <div>
-          <Search  acceptSearches={ this.acceptSearches} charities={ reducedCharities }/>
+          <Search  acceptSearches={ acceptSearches} charities={ reducedCharities }/>
           <button className='text-white' onClick={() => {
-              this.handleSearch()
+              handleSearch()
           }}>Do It!!!</button>
         </div>
       );
     }
-  }
+  
   
   export default CharitiesBuilder;
 

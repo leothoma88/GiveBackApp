@@ -1,4 +1,8 @@
-import React from 'react'
+import React, { Component } from 'react';
+import Cards from './Cards';
+import CharitiesBuilder from './CharitiesBuilder';
+import Search from './Search'
+
 
 const Home = () => {
   return (
@@ -8,19 +12,8 @@ const Home = () => {
             <p className="text-white text-xl mt-[50px] font-bold text-center flex-1">Organizations</p>
         </div>
         <div className="flex" alt="middlesections">
-            <div className="drop-shadow-lg flex-auto mt-20 m-[50px]  ">
-            <div className="grid grid-cols-3 gap-4">
-                <div className='h-96 rounded-md  border-slate-400 px-9 py-10 bg-white'>Organization 1</div>
-                <div className='h-96 rounded-md px-9 py-10 bg-white'>Organization 1</div>
-                <div className='rounded-md px-9 py-10 bg-white'>Organization 1</div>
-                <div className='rounded-md px-9 py-10 bg-white'>Organization 1</div>
-                <div className='h-96 rounded-md px-9 py-10 bg-white'>Organization 1</div>
-                <div className='rounded-md px-9 py-10 bg-white'>Organization 1</div>
-                <div className='h-96 rounded-md px-9 py-10 bg-white'>Organization 1</div>
-                <div className='rounded-md px-9 py-10 bg-white'>Organization 1</div>
-                <div className='rounded-md px-9 py-10 bg-white'>Organization 1</div>
-                
-        </div> 
+            <div className="drop-shadow-lg flex-auto mt-20 m-[50px]  ">      
+                <CharitiesBuilder/>   
             </div>
         </div>
         <section className="bg-gray-900 ">

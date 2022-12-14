@@ -1,17 +1,30 @@
 // import photo from "../assets/charity-photo-test.avif";
-// import { DonateBtn } from "./DonateBtn";
-import React, { Component } from "react";
+import { DonateBtn } from "./DonateBtn";
+import React, {useState} from "react";
+import { useQuery, useMutation} from "@apollo/client";
+import { QUERY_SEARCH } from '../utils/queries';
+import { SAVE_DONATION, REMOVE_DONATION } from "../utils/mutations";
 // import  { Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Button } from "@mui/material";
-// import  { Modal, Box, Typography, Button } from "@mui/material";
+import  { Modal, Box, Typography, Button } from "@mui/material";
 
-class Cards extends Component {
+// class Cards extends Component {
+function Cards ({name, description, coverImageUrl}) {
+  // const { name,description,coverImageUrl } = this.props;
+  const [showModal, setShowModal] = useState(false);
+  const handleClose = () => {setShowModal(false)}
+  const {loading, data} = useQuery (QUERY_SEARCH);
+  const [saveDonation, {error}] = useMutation (SAVE_DONATION);
+  const [removeDonation, {err}] = useMutation (REMOVE_DONATION);
+  const donationData = data?.search || {};
 
-  
 
-  render() {
-  const{name,description,coverImageUrl}=this.props;
-  // const [showModal, setShowModal] = useState(false);
-  // const handleClose = () => {setShowModal(false)}
+// Create a function that handle savedonatio to return the data, and one for removing the donation
+  // const handleSaveDonation = async (name) => {
+  //   if(!name) {return}
+  //   try {
+      
+  //   } 
+  // }
   return (
     <>
       <div className="rounded-lg overflow-hidden shadow-lg">
@@ -29,7 +42,7 @@ class Cards extends Component {
             {description}
           </p>
         </div>
-{/* 
+
         <DonateBtn onClickBtn={() => {setShowModal(true);}}/>
         <Modal
         open={showModal}
@@ -37,7 +50,7 @@ class Cards extends Component {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description">
         <Box className= 'absolute w-[60%] md:max-h-screen md:max-w-xl bg-amber-100 rounded-lg p-6  mt-10 ml-12'>
-        <img className="w-[85%] ml-[7%] mr-[10%] rounded-lg" src={coverPic} alt="" />
+        <img className="w-[85%] ml-[7%] mr-[10%] rounded-lg" src={coverImageUrl} alt="" />
         <br />
         <Typography id="modal-modal-title" variant="h4" component="h2" className=" text-black">
           {name}
@@ -48,12 +61,11 @@ class Cards extends Component {
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={handleClose}>Donate</Button>
         </Box>
-        </Modal> */}
+        </Modal>
 
       </div>    
     </>
   );
-};
 }
 
 

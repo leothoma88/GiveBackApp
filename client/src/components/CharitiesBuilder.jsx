@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, {useState, useEffect } from 'react';
 import Search from './Search'
 import { QUERY_SEARCH} from '../utils/queries'
 import { useLazyQuery } from '@apollo/client';
@@ -10,7 +10,7 @@ import { useLazyQuery } from '@apollo/client';
 //         charities: []
 //       };
 //     }
-function CharitiesBuilder() {
+function CharitiesBuilder({setCharitiesToShow}) {
    
     const [charities,setCharities] = useState([])
     const [search,setSearch] = useState("")
@@ -25,10 +25,24 @@ function CharitiesBuilder() {
         doSearch()
     }
 
+    // const handleSearchByEnter = (event) => {
+    //   console.log('please', event)
+    //   if(event.key === 'Enter'){
+    //     doSearch()
+    //   }
+    // }
+
      const acceptSearches = (searchTerm) => {
-        console.log("Accept searches", searchTerm)
         setSearch(searchTerm)
     }
+
+    useEffect(() => {
+      if(data && data.search){
+        console.log('loki', data)
+        setCharitiesToShow(data.search)
+      }
+    }, [setCharitiesToShow, data])
+    
   
     
      
@@ -38,7 +52,7 @@ function CharitiesBuilder() {
           <Search  acceptSearches={ acceptSearches} charities={ reducedCharities }/>
           <button className='text-white' onClick={() => {
               handleSearch()
-          }}>Do It!!!</button>
+          }} >Do It!!!</button>
         </div>
       );
     }

@@ -1,19 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Cards from './Cards';
 import CharitiesBuilder from './CharitiesBuilder';
-import Search from './Search'
+// import Search from './Search'
+import { useState } from 'react';
 
 
 const Home = () => {
+    const [charitiesToShow, setCharitiesToShow] = useState();
   return (
     <div>
     <main>
     <div className="flex">
+        
             <p className="text-white text-xl mt-[50px] font-bold text-center flex-1">Organizations</p>
         </div>
         <div className="flex" alt="middlesections">
             <div className="drop-shadow-lg flex-auto mt-20 m-[50px]  ">      
-                <CharitiesBuilder/>   
+                <CharitiesBuilder setCharitiesToShow = {setCharitiesToShow}/>
+                {charitiesToShow?.map((charity) => {
+               return <Cards name={charity['name']} key={charity['name']}
+               description={charity['description']}
+               coverImageUrl={charity['coverImageUrl']}/>
+             })}
+  
             </div>
         </div>
         <section className="bg-gray-900 ">

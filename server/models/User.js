@@ -1,9 +1,8 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-
+require('./Donation');
 // import schema from Donation.js
-// const donationSchema = model("Donation").schema;
-
+const donationSchema = model('Donation').schema;
 const userSchema = new Schema(
   {
     username: {
@@ -22,7 +21,7 @@ const userSchema = new Schema(
       required: true,
     },
 
-    // savedDonations: [donationSchema],
+    savedDonations: [donationSchema],
   },
   // set this to use virtual below
   {

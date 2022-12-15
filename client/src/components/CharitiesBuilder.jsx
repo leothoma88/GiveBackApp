@@ -13,7 +13,7 @@ import { useLazyQuery } from '@apollo/client';
 function CharitiesBuilder({setCharitiesToShow}) {
    
     const [charities,setCharities] = useState([])
-    const [search,setSearch] = useState("")
+    const [search,setSearch] = useState("charity")
     const[doSearch ,{loading,data}] =useLazyQuery(QUERY_SEARCH, {
         variables: { searchTerm: search },
       })
@@ -24,6 +24,10 @@ function CharitiesBuilder({setCharitiesToShow}) {
         
         doSearch()
     }
+    useEffect(()=>{
+      handleSearch();
+
+    },[])
 
     // const handleSearchByEnter = (event) => {
     //   console.log('please', event)
@@ -48,9 +52,11 @@ function CharitiesBuilder({setCharitiesToShow}) {
         document.removeEventListener("keydown", listener);
       };
     }, []);
-
+    
+     
 
      const acceptSearches = (searchTerm) => {
+       
         setSearch(searchTerm)
     }
 

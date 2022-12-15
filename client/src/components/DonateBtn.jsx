@@ -10,3 +10,4 @@ export const DonateBtn = ({onClickBtn}) => {
     </div>
   )
 }
+

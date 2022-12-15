@@ -1,6 +1,35 @@
-import React from "react";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import Auth from '../utils/auth';
+import { ADD_USER } from '../utils/mutations';
 
-const Signup = () => {
+function Signup(props) {
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [addUser] = useMutation(ADD_USER);
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    const mutationResponse = await addUser({
+      variables: {
+        email: formState.email,
+        password: formState.password,
+        username: formState.username,
+      },
+    });
+    const token = mutationResponse.data.addUser.token;
+    Auth.login(token);
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+
   return (
     <div>
       <h1 className="signup text-3xl font-bold">Signup Here:</h1>
@@ -8,31 +37,40 @@ const Signup = () => {
         <div className="flex p-5">
           <div className="start bg-red-400 w-4/5 border-bg-black rounded-2xl">
             <div className="card p-8 m-5 border-2 bg-red-300 rounded-2xl">
-              <form className="form login-form">
+              <form className="form login-form" onSubmit={handleFormSubmit}>
                 <div className="form-group">
-                  <label className="form-label" htmlFor="fullName">
-                    Full Name:
+                  <label className="form-label" htmlFor="userName">
+                    Username:
                   </label>
                   <input
                     className="block w-full form-input form-control"
-                    type="text"
-                    id="fullName"
+                    placeholder="Full Name"
+                    name="username"
+                    type="username"
+                    id="username"
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="form-group">
                   <label htmlFor="emailInput">Email:</label>
                   <input
                     className="block w-full form-input form-control"
-                    type="password"
-                    id="emailInput"
+                    placeholder="yourEmail@here.com"
+                    name="email"
+                    type="email"
+                    id="email"
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="messageDesc">Message:</label>
+                  <label htmlFor="password">Password:</label>
                   <input
                     className="block w-full form-input form-control"
+                    placeholder="******"
+                    name="password"
                     type="password"
-                    id="messageDesc"
+                    id="password"
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="BtnSpace">

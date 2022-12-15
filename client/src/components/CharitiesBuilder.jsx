@@ -13,7 +13,7 @@ import { useLazyQuery } from '@apollo/client';
 function CharitiesBuilder({setCharitiesToShow}) {
    
     const [charities,setCharities] = useState([])
-    const [search,setSearch] = useState("")
+    const [search,setSearch] = useState("charity")
     const[doSearch ,{loading,data}] =useLazyQuery(QUERY_SEARCH, {
         variables: { searchTerm: search },
       })
@@ -24,6 +24,10 @@ function CharitiesBuilder({setCharitiesToShow}) {
         
         doSearch()
     }
+    useEffect(()=>{
+      handleSearch();
+
+    },[])
 
     // const handleSearchByEnter = (event) => {
     //   console.log('please', event)
@@ -48,9 +52,11 @@ function CharitiesBuilder({setCharitiesToShow}) {
         document.removeEventListener("keydown", listener);
       };
     }, []);
-
+    
+     
 
      const acceptSearches = (searchTerm) => {
+       
         setSearch(searchTerm)
     }
 
@@ -68,9 +74,9 @@ function CharitiesBuilder({setCharitiesToShow}) {
       return (
         <div >
           <Search  acceptSearches={ acceptSearches } charities={ reducedCharities }/>
-          <button className='text-white' onClick={() => {
+          <button className='text-white my-3 inline-block px-9 py-2.5 bg-pink-700 font-medium text-xs leading-tight uppercase rounded shadow-lg hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"' onClick={() => {
               handleSearch() 
-          }} >Do It!!!</button>
+          }} >Search Organizations</button>
 
         </div>
       );

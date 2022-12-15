@@ -22,12 +22,12 @@ function Cards ({name, description, coverImageUrl}) {
   // const handleSaveDonation = async (name) => {
   //   if(!name) {return}
   //   try {
-      
+    // h-96 rounded-md  border-slate-400 px-9 py-10 bg-white
   //   } 
   // }
   return (
     <>
-      <div className="rounded-lg overflow-hidden shadow-lg">
+      <div className="rounded-lg overflow-hidden shadow-lg ">
         <div className="relative pb-48 overflow-hidden">
           <img
             className="absolute inset-0 h-full w-full object-cover transition  hover:-translate-y-1 hover:scale-110"

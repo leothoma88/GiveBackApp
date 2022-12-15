@@ -6,6 +6,7 @@ import { QUERY_SEARCH } from '../utils/queries';
 import { SAVE_DONATION, REMOVE_DONATION } from "../utils/mutations";
 // import  { Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Button } from "@mui/material";
 import  { Modal, Box, Typography, Button } from "@mui/material";
+import baseCard from '../assets/basecard.jpg';
 
 // class Cards extends Component {
 function Cards ({name, description, coverImageUrl}) {
@@ -16,7 +17,6 @@ function Cards ({name, description, coverImageUrl}) {
   const [saveDonation, {error}] = useMutation (SAVE_DONATION);
   const [removeDonation, {err}] = useMutation (REMOVE_DONATION);
   const donationData = data?.search || {};
-
 
 // Create a function that handle savedonatio to return the data, and one for removing the donation
   // const handleSaveDonation = async (name) => {
@@ -31,7 +31,7 @@ function Cards ({name, description, coverImageUrl}) {
         <div className="relative pb-48 overflow-hidden">
           <img
             className="absolute inset-0 h-full w-full object-cover transition  hover:-translate-y-1 hover:scale-110"
-            src={coverImageUrl}
+            src={coverImageUrl || baseCard }
             alt=""
           />
         </div>

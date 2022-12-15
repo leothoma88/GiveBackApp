@@ -3,7 +3,7 @@ import Cards from './Cards';
 import CharitiesBuilder from './CharitiesBuilder';
 // import Search from './Search'
 import { useState } from 'react';
-
+import baseCard from '../assets/basecard.jpg';
 
 const Home = () => {
     const [charitiesToShow, setCharitiesToShow] = useState();
@@ -21,7 +21,7 @@ const Home = () => {
                 {charitiesToShow?.map((charity) => {
                return <Cards name={charity['name']} key={charity['name']}
                description={charity['description']}
-               coverImageUrl={charity['coverImageUrl']}/>
+               coverImageUrl={charity['coverImageUrl'] || baseCard}/>
              })}
              </div>
   

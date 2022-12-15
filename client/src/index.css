@@ -17,5 +17,22 @@ code {
     monospace;
 }
 
-.signup {
+.select {
+  color: black;
+}
+
+.donateForm {
+  color: white;
+}
+
+.payment-selection {
+  color: black;
+}
+
+.credit-card {
+  font-size: 15px;
+}
+
+.select {
+  color: aliceblue;
 }

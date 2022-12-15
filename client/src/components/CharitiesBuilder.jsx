@@ -28,9 +28,27 @@ function CharitiesBuilder({setCharitiesToShow}) {
     // const handleSearchByEnter = (event) => {
     //   console.log('please', event)
     //   if(event.key === 'Enter'){
-    //     doSearch()
+    //     event.preventDefault();
+    //     this.handleSearch()
+    //     event.stopPropagation();
     //   }
     // }
+    //Search by enter
+    useEffect(() => {
+      const listener = event => {
+        if (event.code === "Enter" || event.code === "NumpadEnter") {
+          console.log("Enter key was pressed. Run your function.");
+          event.preventDefault();
+          // callMyFunction();
+          handleSearch();
+        }
+      };
+      document.addEventListener("keydown", listener);
+      return () => {
+        document.removeEventListener("keydown", listener);
+      };
+    }, []);
+
 
      const acceptSearches = (searchTerm) => {
         setSearch(searchTerm)
@@ -48,11 +66,12 @@ function CharitiesBuilder({setCharitiesToShow}) {
      
       const reducedCharities = charities.slice(0, 12)
       return (
-        <div>
-          <Search  acceptSearches={ acceptSearches} charities={ reducedCharities }/>
+        <div >
+          <Search  acceptSearches={ acceptSearches } charities={ reducedCharities }/>
           <button className='text-white' onClick={() => {
-              handleSearch()
+              handleSearch() 
           }} >Do It!!!</button>
+
         </div>
       );
     }

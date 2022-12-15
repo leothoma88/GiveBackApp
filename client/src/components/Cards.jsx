@@ -42,7 +42,6 @@ function Cards ({name, description, coverImageUrl}) {
             {description}
           </p>
         </div>
-
         <DonateBtn onClickBtn={() => {setShowModal(true);}}/>
         <Modal
         open={showModal}

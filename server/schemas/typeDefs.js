@@ -53,6 +53,7 @@ type Nonprofit {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     removeDonation(charityId: ID): User
+    saveDonation(newDonation: ID): User
   }
 `;
 

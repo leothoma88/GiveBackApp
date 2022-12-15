@@ -6,11 +6,12 @@ const resolvers = {
   Query: {
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
     me: async (parent, args, context) => {
-      if (context.user) {push 
-        return User.findOne({ _id: context.user._id });
+      if (context.user) {
+        data = await User.findOne({ _id: context.user._id }).select('-__v -password');
+        return data;
       }
-      throw new AuthenticationError("You need to be logged in!");
-    },
+      throw new AuthenticationError('You need to be logged in!');
+  },
     charity: async () => {
       const res = await fetch(`https://partners.every.org/v0.2/nonprofit/homewardpet?apiKey=e09241525a3f961bfc6b8533dcbb38a3`);
       const data = await res.json();
@@ -51,6 +52,28 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    saveDonation: async (parent, { newDonation }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { savedDonations: newDonation }},
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    removeDonation: async (parent, { donationId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $pull: { savedDonations: { donationId }}},
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError('Login required!');
+    },
 
     // Add a third argument to the resolver to access data in our `context`
     // saveDonation: async (parent, { data }, context) => {
@@ -73,16 +96,16 @@ const resolvers = {
     // Set up mutation so a logged in user can only remove their profile and no one else's
 
     // Make it so a logged in user can only remove a skill from their own profile
-    removeDonation: async (parent, { charityId }, context) => {
-      if (context.user) {
-        return User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { savedDonations: charityId } },
-          { new: true }
-        );
-      }
-      throw new AuthenticationError("You need to be logged in!");
-    },
+    // removeDonation: async (parent, { charityId }, context) => {
+    //   if (context.user) {
+    //     return User.findOneAndUpdate(
+    //       { _id: context.user._id },
+    //       { $pull: { savedDonations: charityId } },
+    //       { new: true }
+    //     );
+    //   }
+    //   throw new AuthenticationError("You need to be logged in!");
+    // },
   },
 };
 

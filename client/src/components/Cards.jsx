@@ -55,7 +55,7 @@ function Cards ({name, description, coverImageUrl}) {
           {name}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil.
+          {description}
           </Typography>
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={handleClose}>Donate</Button>

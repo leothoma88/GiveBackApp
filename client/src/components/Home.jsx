@@ -15,13 +15,15 @@ const Home = () => {
             <p className="text-white text-xl mt-[50px] font-bold text-center flex-1">Organizations</p>
         </div>
         <div className="flex" alt="middlesections">
-            <div className="drop-shadow-lg flex-auto mt-20 m-[50px]  ">      
+            <div className="drop-shadow-lg flex-auto mt-20 m-[50px]">      
                 <CharitiesBuilder setCharitiesToShow = {setCharitiesToShow}/>
+                <div className="grid grid-cols-3 gap-4">
                 {charitiesToShow?.map((charity) => {
                return <Cards name={charity['name']} key={charity['name']}
                description={charity['description']}
                coverImageUrl={charity['coverImageUrl']}/>
              })}
+             </div>
   
             </div>
         </div>

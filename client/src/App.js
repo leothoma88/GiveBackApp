@@ -19,6 +19,7 @@ import {
   Nav,
   Profile,
   Signup,
+  DonateHere,
 } from "./components";
 import { Routes, Route, Navigate, withRouter } from "react-router-dom";
 const httpLink = createHttpLink({
@@ -54,6 +55,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/donatehere" element={<DonateHere />}></Route>
         </Routes>
         <Footer />
       </div>

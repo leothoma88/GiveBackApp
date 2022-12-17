@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Donation } = require("../models");
+const { User } = require("../models");
 const { signToken } = require("../utils/auth");
 const fetch = require("node-fetch");
 const resolvers = {
@@ -7,27 +7,33 @@ const resolvers = {
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
     me: async (parent, args, context) => {
       if (context.user) {
-        data = await User.findOne({ _id: context.user._id }).select('-__v -password');
+        data = await User.findOne({ _id: context.user._id }).select(
+          "-__v -password"
+        );
+        console.log("data", data);
         return data;
       }
-      throw new AuthenticationError('You need to be logged in!');
-  },
+      throw new AuthenticationError("You need to be logged in!");
+    },
     charity: async () => {
-      const res = await fetch(`https://partners.every.org/v0.2/nonprofit/homewardpet?apiKey=e09241525a3f961bfc6b8533dcbb38a3`);
+      const res = await fetch(
+        `https://partners.every.org/v0.2/nonprofit/homewardpet?apiKey=e09241525a3f961bfc6b8533dcbb38a3`
+      );
       const data = await res.json();
-      console.log({data})
+      console.log({ data });
       return data.data.nonprofit;
-  },
-    search: async (parent,{searchTerm},context)=> {
-      const res = await fetch (`https://partners.every.org/v0.2/search/${searchTerm}?apiKey=e09241525a3f961bfc6b8533dcbb38a3`);
+    },
+    search: async (parent, { searchTerm }, context) => {
+      const res = await fetch(
+        `https://partners.every.org/v0.2/search/${searchTerm}?apiKey=e09241525a3f961bfc6b8533dcbb38a3`
+      );
       const data = await res.json();
-      console.log(data)
+      console.log(data);
       if (data.nonprofit) {
-        return [data.nonprofit]
+        return [data.nonprofit];
       }
       return data.nonprofits;
-
-    }
+    },
   },
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
@@ -53,26 +59,27 @@ const resolvers = {
       return { token, user };
     },
     saveDonation: async (parent, { newDonation }, context) => {
+      console.log(newDonation);
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { savedDonations: newDonation }},
+          { $addToSet: { savedDonations: newDonation } },
           { new: true }
         );
         return updatedUser;
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
     removeDonation: async (parent, { donationId }, context) => {
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $pull: { savedDonations: { donationId }}},
+          { $pull: { savedDonations: { donationId } } },
           { new: true }
         );
         return updatedUser;
       }
-      throw new AuthenticationError('Login required!');
+      throw new AuthenticationError("Login required!");
     },
 
     // Add a third argument to the resolver to access data in our `context`

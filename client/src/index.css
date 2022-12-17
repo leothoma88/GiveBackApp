@@ -17,6 +17,14 @@ code {
     monospace;
 }
 
+:root {
+  /* Global Colors */
+  --cranberry: #df3e56;
+  --cream: #FCFFE7;
+  --lightblue: #c0def1;
+  --darkblue: #191f3d;
+}
+
 .select {
   color: black;
 }

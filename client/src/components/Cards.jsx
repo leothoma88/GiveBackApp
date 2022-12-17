@@ -27,7 +27,7 @@ function Cards ({name, description, coverImageUrl}) {
   // }
   return (
     <>
-      <div className="rounded-lg overflow-hidden shadow-lg ">
+      <div className="rounded-lg overflow-hidden shadow-lg bg-[#191f3d]">
         <div className="relative pb-48 overflow-hidden">
           <img
             className="absolute inset-0 h-full w-full object-cover transition  hover:-translate-y-1 hover:scale-110"

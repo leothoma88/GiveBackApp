@@ -2,7 +2,9 @@ import React from "react";
 import Cards from "./Cards";
 import CharitiesBuilder from "./CharitiesBuilder";
 // import Search from './Search'
+
 import { useState } from "react";
+
 
 const Home = () => {
   const [charitiesToShow, setCharitiesToShow] = useState();

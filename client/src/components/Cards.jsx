@@ -5,7 +5,9 @@ import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_SEARCH } from "../utils/queries";
 import { SAVE_DONATION, REMOVE_DONATION } from "../utils/mutations";
 // import  { Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Button } from "@mui/material";
+
 import { Modal, Box, Typography, Button } from "@mui/material";
+
 
 // class Cards extends Component {
 function Cards({ name, description, coverImageUrl }) {
@@ -18,6 +20,7 @@ function Cards({ name, description, coverImageUrl }) {
   const [saveDonation, { error }] = useMutation(SAVE_DONATION);
   const [removeDonation, { err }] = useMutation(REMOVE_DONATION);
   const donationData = data?.search || {};
+
 
   const handleSave = async () => {
     const inp = { name, description, coverImageUrl };
@@ -34,14 +37,15 @@ function Cards({ name, description, coverImageUrl }) {
   //   try {
 
   //   }
+
   // }
   return (
     <>
-      <div className="rounded-lg overflow-hidden shadow-lg">
+      <div className="rounded-lg overflow-hidden shadow-lg ">
         <div className="relative pb-48 overflow-hidden">
           <img
             className="absolute inset-0 h-full w-full object-cover transition  hover:-translate-y-1 hover:scale-110"
-            src={coverImageUrl}
+            src={coverImageUrl || baseCard }
             alt=""
           />
         </div>
@@ -56,6 +60,7 @@ function Cards({ name, description, coverImageUrl }) {
           }}
         />
         <Modal
+
           open={showModal}
           onClose={handleClose}
           aria-labelledby="modal-modal-title"
@@ -83,6 +88,7 @@ function Cards({ name, description, coverImageUrl }) {
             <Button onClick={handleClose}>Donate</Button>
             <Button onClick={handleSave}>Save</Button>
           </Box>
+
         </Modal>
       </div>
     </>

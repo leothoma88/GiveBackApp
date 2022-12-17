@@ -45,7 +45,7 @@ function Cards({ name, description, coverImageUrl }) {
         <div className="relative pb-48 overflow-hidden">
           <img
             className="absolute inset-0 h-full w-full object-cover transition  hover:-translate-y-1 hover:scale-110"
-            src={coverImageUrl || baseCard }
+            src={coverImageUrl}
             alt=""
           />
         </div>

@@ -5,7 +5,6 @@ import CharitiesBuilder from "./CharitiesBuilder";
 
 import { useState } from "react";
 
-
 const Home = () => {
         const [charitiesToShow, setCharitiesToShow] = useState();
         const [email, setEmail] = useState("");
@@ -48,7 +47,6 @@ const Home = () => {
                     }
                 });
         };
-
         const resetForm = () => {
             setSubject("");
             setMessage("");
@@ -68,7 +66,7 @@ const Home = () => {
                                 {charitiesToShow?.map((charity) => {
                                     return <Cards name={charity['name']} key={charity['name']}
                                         description={charity['description']}
-                                        coverImageUrl={charity['coverImageUrl'] || baseCard} />
+                                        coverImageUrl={charity['coverImageUrl']} />
                                 })}
                             </div>
 
@@ -125,5 +123,4 @@ const Home = () => {
             </div>
         )
     }
-
 export default Home;

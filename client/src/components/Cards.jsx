@@ -25,6 +25,12 @@ function Cards ({name, description, coverImageUrl}) {
     // h-96 rounded-md  border-slate-400 px-9 py-10 bg-white
   //   } 
   // }
+  const handleSave = async () => {
+    const inp = { name, description, coverImageUrl };
+    const { data } = await saveDonation({
+      variables: { data: inp },
+    });
+
   return (
     <>
       <div className="rounded-lg overflow-hidden shadow-lg ">

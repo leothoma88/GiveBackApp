@@ -27,7 +27,7 @@ function Cards ({name, description, coverImageUrl}) {
   // }
   return (
     <>
-      <div className="rounded-lg overflow-hidden shadow-lg bg-[#191f3d]">
+      <div className="rounded-lg overflow-hidden shadow-lg bg-[#FCFFE7]">
         <div className="relative pb-48 overflow-hidden">
           <img
             className="absolute inset-0 h-full w-full object-cover transition  hover:-translate-y-1 hover:scale-110"
@@ -37,8 +37,8 @@ function Cards ({name, description, coverImageUrl}) {
         </div>
 
         <div className="px-6 py-4">
-          <p className="font-bold text-xl mb-2 text-white">{name}</p>
-          <p className="text-gray-300 text-base">
+          <p className="font-bold text-xl mb-2 text-[#191f3d]">{name}</p>
+          <p className="text-[#191f3d] text-base">
             {description}
           </p>
         </div>

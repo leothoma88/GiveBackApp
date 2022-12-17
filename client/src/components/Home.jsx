@@ -103,8 +103,7 @@ const Home = () => {
                   onChange={handleInputChange}
                   rows="6"
                   className="block p-2.5 w-full text-sm text-gray-900 bg-[#191f3d] rounded-lg shadow-sm border border-gray-600 focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a comment...">
-
-                                    </input>
+                     </input>
                                 </div>
                                 <button
                 type="submit"

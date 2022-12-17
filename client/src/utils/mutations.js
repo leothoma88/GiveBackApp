@@ -14,10 +14,14 @@ export const ADD_USER = gql`
 
 export const SAVE_DONATION = gql`
   mutation saveDonation($data: DonationInput!) {
-    saveDonation(data: $data) {
+    saveDonation(newDonation: $data) {
       _id
       username
-      savedDonations
+      savedDonations {
+        name
+        description
+        coverImageUrl
+      }
     }
   }
 `;

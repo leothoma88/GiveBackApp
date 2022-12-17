@@ -12,10 +12,11 @@ router.post("/send", async (req, res) => {
   console.log("TRY");
   try {
     const transporter = nodemailer.createTransport({
-      service: "hotmail",
+      host: "smtp.ethereal.email",
+      port: 587,
       auth: {
-        user: process.env.USER,
-        pass: process.env.PASSWORD,
+        user: process.env.EMAIL,
+        pass: process.env.EMAIL_PASS,
       },
     });
     const options = {

@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 const donationSchema = new Schema({
-  charityName: {
+  name: {
     type: String,
     required: true,
   },
@@ -13,7 +13,7 @@ const donationSchema = new Schema({
     type: String,
     required: true,
   },
-  image: {
+  coverImageUrl: {
     type: String,
   },
   link: {
@@ -21,6 +21,6 @@ const donationSchema = new Schema({
   },
 });
 
-const Donation = model('Donation', donationSchema);
+//const Donation = model('Donation', donationSchema);
 
-module.exports = Donation;
+module.exports = donationSchema;

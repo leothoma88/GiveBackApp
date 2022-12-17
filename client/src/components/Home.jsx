@@ -1,9 +1,10 @@
-import React from 'react';
-import Cards from './Cards';
-import CharitiesBuilder from './CharitiesBuilder';
+import React from "react";
+import Cards from "./Cards";
+import CharitiesBuilder from "./CharitiesBuilder";
 // import Search from './Search'
-import { useState } from 'react';
-import baseCard from '../assets/basecard.jpg';
+
+import { useState } from "react";
+
 
 const Home = () => {
         const [charitiesToShow, setCharitiesToShow] = useState();
@@ -88,6 +89,7 @@ const Home = () => {
                                 </div>
                                 <div>
                                 <input
+
                   value={subject}
                   name="subject"
                   type="text"
@@ -97,6 +99,7 @@ const Home = () => {
                                 <div className="sm:col-span-2">
 
                                 <input
+
                   value={message}
                   name="message"
                   type="message"
@@ -108,11 +111,11 @@ const Home = () => {
                                 <button
                 type="submit"
                 className="py-3 px-5 text-sm font-medium text-center text-[#FCFFE7] rounded-lg bg-[#191f3d] hover:bg-[#df3e56] hover:drop-shadow-lg  sm:w-fit focus:ring-4 focus:outline-none  bg-primary-600 hover:bg-primary-700 focus:ring-primary-800"
+
                 onClick={handleFormSubmit}
               >
                 Send message
-              </button>
-                               
+              </button>                            
                             </form>
                         </div>
                     </section>
@@ -123,4 +126,4 @@ const Home = () => {
         )
     }
 
-export default Home
+export default Home;

@@ -45,7 +45,7 @@ const LoginForm = () => {
 
   return (
     <div>
-      <h1 className="text-white text-3xl font-bold"> Login:</h1>
+      <h1 className="text-white text-3xl font-bold bg-[#df3e56]"> Sign in to GiveBack</h1>
       <div className="flex ml-20 place-content-center">
         <div className="flex p-5">
           <div className=" bg-red-400 w-4/5 rounded-2xl">

@@ -2,6 +2,7 @@ import React, {useState, useEffect } from 'react';
 import Search from './Search'
 import { QUERY_SEARCH} from '../utils/queries'
 import { useLazyQuery } from '@apollo/client';
+import {BiSearchAlt} from 'react-icons/bi'
 
 // class CharitiesBuilder extends Component {
 //     constructor(props) {
@@ -74,7 +75,7 @@ function CharitiesBuilder({setCharitiesToShow}) {
       return (
         <div >
           <Search  acceptSearches={ acceptSearches } charities={ reducedCharities }/>
-          <button className='text-white my-3 inline-block px-9 py-2.5 bg-pink-700 font-medium text-xs leading-tight uppercase rounded shadow-lg hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"' onClick={() => {
+          <button className='w-auto text-white my-3 inline-block px-9 py-2.5 bg-[#191f3d] text-sm uppercase rounded shadow-lg hover:bg-teal-600  hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 transition duration-150 ease-in-out' onClick={() => {
               handleSearch() 
           }} >Search Organizations</button>
 

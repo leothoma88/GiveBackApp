@@ -66,6 +66,7 @@ const Home = () => {
         <div className="flex" alt="middlesections">
           <div className="drop-shadow-lg flex-auto mt-20 m-[50px]  ">
             <CharitiesBuilder setCharitiesToShow={setCharitiesToShow} />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
             {charitiesToShow?.map((charity) => {
               return (
                 <Cards
@@ -76,6 +77,7 @@ const Home = () => {
                 />
               );
             })}
+          </div>
           </div>
         </div>
         <section className="bg-gray-900 ">

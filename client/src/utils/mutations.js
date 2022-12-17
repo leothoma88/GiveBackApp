@@ -17,7 +17,12 @@ export const SAVE_DONATION = gql`
     saveDonation(data: $data) {
       _id
       username
-      savedDonations
+      savedDonations{
+        ein
+        name
+        description
+        coverImageUrl
+      }
     }
   }
 `;

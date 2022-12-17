@@ -52,8 +52,10 @@ type Nonprofit {
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    savedDonation:[Nonprofit]
     removeDonation(charityId: ID): User
     saveDonation(newDonation: ID): User
+
   }
 `;
 

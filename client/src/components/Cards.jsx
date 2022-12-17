@@ -59,6 +59,7 @@ function Cards ({name, description, coverImageUrl}) {
           </Typography>
           <Button className="inline-block bg-pink-500 rounded-full px-5 py-2 text-sm font-semibold text-white mr-2 mb-2 hover:bg-teal-400" onClick={handleClose}>Cancel</Button>
           <Button className="inline-block bg-pink-500 rounded-full px-5 py-2 text-sm font-semibold text-white mr-2 mb-2 hover:bg-teal-400" onClick={handleClose}>Donate</Button>
+          <Button className="inline-block bg-pink-500 rounded-full px-5 py-2 text-sm font-semibold text-white mr-2 mb-2 hover:bg-teal-400" onClick={handleClose}>Save</Button>
         </Box>
         </Modal>
 
@@ -66,6 +67,8 @@ function Cards ({name, description, coverImageUrl}) {
     </>
   );
 }
+
+
 
 
 export default Cards;

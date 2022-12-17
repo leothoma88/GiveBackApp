@@ -1,6 +1,7 @@
 import React, {  useState } from 'react';
 import Cards from './Cards';
 
+
 const Search   = ({acceptSearches, charities}) => {
 
     const [_searchFilter, setSearchFilter] = useState()
@@ -17,6 +18,7 @@ const Search   = ({acceptSearches, charities}) => {
           return lowerCaseName.indexOf(_searchFilter) !== -1;
         }
       );
+
 
       return (
         <div> 

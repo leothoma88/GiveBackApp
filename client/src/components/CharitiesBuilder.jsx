@@ -3,6 +3,7 @@ import Search from './Search'
 import { QUERY_SEARCH} from '../utils/queries'
 import { useLazyQuery } from '@apollo/client';
 
+
 // class CharitiesBuilder extends Component {
 //     constructor(props) {
 //       super(props);
@@ -18,6 +19,9 @@ function CharitiesBuilder({setCharitiesToShow}) {
         variables: { searchTerm: search },
       })
     
+
+
+
 
     const handleSearch = () => {
         console.log("SEARCGIN!!!", charities)
@@ -89,3 +93,5 @@ function CharitiesBuilder({setCharitiesToShow}) {
 //   https://partners.every.org/v0.2/search/dogs?apiKey=ba48908690c47fcc97e15a15220bcb75
 
 //   https://partners.every.org/v0.2/nonprofit/maps?apiKey=ba48908690c47fcc97e15a15220bcb75
+
+

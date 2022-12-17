@@ -59,7 +59,7 @@ const resolvers = {
           { $push: { savedDonations: newDonation }},
           { new: true }
         );
-        return updatedUser;
+        return res.json(updatedUser);
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -70,7 +70,7 @@ const resolvers = {
           { $pull: { savedDonations: { donationId }}},
           { new: true }
         );
-        return updatedUser;
+        return res.json(updatedUser);
       }
       throw new AuthenticationError('Login required!');
     },

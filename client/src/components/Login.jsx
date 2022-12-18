@@ -92,12 +92,12 @@ const LoginForm = () => {
                   <p className="text-[#FCFFE7] text-xl mb-4">
                     Not registered yet?
                   </p>
-                  <button
+                  <Link
                     className="loginBtn btn-primary border-2 bg-[#df3e56] border-[#FCFFE7] text-[#FCFFE7] text-lg w-[50%] h-fit p-2 rounded-xl hover:bg-amber-500"
                     to="/signup"
                   >
                     Create a new account!
-                  </button>
+                  </Link>
                 </div>
               </form>
             </div>

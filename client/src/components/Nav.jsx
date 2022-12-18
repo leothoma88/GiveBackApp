@@ -27,17 +27,21 @@ return (
     <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static text-[#FCFFE7] bg-[#df3e56] gap-2 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-20 ':'top-[-490px]'}`}>
         {AuthService.loggedIn() ? (
           <>
+            <Link className="inline-block px-9 py-2.5  text-[#FCFFE7] text-md leading-tight uppercase rounded hover:shadow-lg transition duration-150 ease-in-out" to='/'>Home</Link>
+
             <Link className="inline-block px-9 py-2.5 text-[#FCFFE7]  text-md leading-tight uppercase rounded hover:shadow-lg transition duration-150 ease-in-out" to='/profile'>Profile</Link>
+
+            <Link className="inline-block px-9 py-2.5  text-[#FCFFE7] text-md leading-tight uppercase rounded hover:shadow-lg transition duration-150 ease-in-out" to='/about'>About Us</Link>
             <Link onClick={Auth.logout} className="inline-block px-9 py-2.5 text-[#FCFFE7] text-md leading-tight uppercase rounded shadow-lg bg-[#191f3d] hover:bg-[#c0def1] hover:text-[#191f3d] active:shadow-lg transition duration-150 ease-in-out" to='/'>Logout</Link>
             </>):(
             <>
+            <Link className="inline-block px-9 py-2.5  text-[#FCFFE7] text-md leading-tight uppercase rounded hover:shadow-lg transition duration-150 ease-in-out" to='/'>Home</Link>
+
+            <Link className="inline-block px-9 py-2.5  text-[#FCFFE7] text-md leading-tight uppercase rounded hover:shadow-lg transition duration-150 ease-in-out" to='/about'>About Us</Link>
+            
             <Link className="inline-block px-9 py-2.5 text-[#FCFFE7] text-md leading-tight uppercase rounded shadow-lg bg-[#191f3d] hover:bg-[#c0def1] hover:text-[#191f3d] active:shadow-lg transition duration-150 ease-in-out" to='/login'>Login/Sign Up</Link>
             
             </>)}
-            <Link className="inline-block px-9 py-2.5  text-[#FCFFE7] text-md leading-tight uppercase rounded hover:shadow-lg transition duration-150 ease-in-out" to='/'>Home</Link>
-  
-
-            <Link className="inline-block px-9 py-2.5  text-[#FCFFE7] text-md leading-tight uppercase rounded hover:shadow-lg transition duration-150 ease-in-out" to='/about'>About Us</Link>
             
     </ul>
     </div>

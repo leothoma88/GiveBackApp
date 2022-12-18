@@ -54,10 +54,9 @@ const Home = () => {
         };
         return (
             <div>
-                <main>
-                    <div className="flex bg-[#df3e56]">
-
-                        <h2 className="text-[#FCFFE7] text-2xl mt-[50px] font-bold text-center flex-1">Organizations</h2>
+                <main className="flex flex-col justify-center w-full h-full pt-10 bg-[#df3e56]">
+                    <div className="w-full mx-auto text-center text-[#FCFFE7] bg-[#df3e56]">
+                        <h1 className="text-5xl md:text-5xl sm:text-4xl font-bold p-6">Charities and Organizations</h1>
                     </div>
                     <div className="flex bg-[#df3e56]" alt="middlesections">
                         <div className="drop-shadow-lg flex-auto mt-20 m-[50px]">
@@ -66,7 +65,7 @@ const Home = () => {
                                 {charitiesToShow?.map((charity) => {
                                     return <Cards name={charity['name']} key={charity['name']}
                                         description={charity['description']}
-                                        coverImageUrl={charity['coverImageUrl']} />
+                                        coverImageUrl={charity['coverImageUrl']} ein={charity['ein']}/>
                                 })}
                             </div>
 

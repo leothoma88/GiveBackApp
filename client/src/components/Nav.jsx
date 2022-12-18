@@ -15,9 +15,9 @@ const Nav = () => {
 return (
   <div className='shadow-md w-full top-0 left-0'>
     <div className='flex flex-row md:flex items-center justify-between bg-[#df3e56] py-2 md:px-10 px-7'>
-    <img className='font-bold object-contain h-20 w-21 cursor-pointer flex items-center font-[Aboreto-Regular] 
+    <a href='/'><img className='font-bold object-contain h-20 w-21 cursor-pointer flex items-center font-[Aboreto-Regular] 
     text-[#2B3467]' src={Logo}
-    alt=""/>
+    alt=""/></a>
     
     
     <div onClick={()=>setOpen(!open)} className='text-3xl absolute right-8 top-6 cursor-pointer md:hidden'>

@@ -20,6 +20,7 @@ export const QUERY_SEARCH = gql`
       name
       description
       coverImageUrl
+      ein
     }
   }
 `;

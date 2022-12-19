@@ -4,7 +4,7 @@ import Nav from './Nav'
 const Header = () => {
   return (
     <div>
-    <div className=""></div>
+    <div className="z-[-1]"></div>
         <Nav/>
     </div>
   )

@@ -10,25 +10,22 @@ const resolvers = {
         data = await User.findOne({ _id: context.user._id }).select(
           "-__v -password"
         );
-        console.log("data", data);
         return data;
       }
       throw new AuthenticationError("You need to be logged in!");
     },
     charity: async () => {
       const res = await fetch(
-        `https://partners.every.org/v0.2/nonprofit/homewardpet?apiKey=e09241525a3f961bfc6b8533dcbb38a3`
+        `https://partners.every.org/v0.2/nonprofit/homewardpet?apiKey=${process.env.REACT_APP_API_KEY}`
       );
       const data = await res.json();
-      console.log({ data });
       return data.data.nonprofit;
     },
     search: async (parent, { searchTerm }, context) => {
       const res = await fetch(
-        `https://partners.every.org/v0.2/search/${searchTerm}?apiKey=e09241525a3f961bfc6b8533dcbb38a3`
+        `https://partners.every.org/v0.2/search/${searchTerm}?apiKey=${process.env.REACT_APP_API_KEY}`
       );
       const data = await res.json();
-      console.log(data);
       if (data.nonprofit) {
         return [data.nonprofit];
       }
@@ -59,7 +56,6 @@ const resolvers = {
       return { token, user };
     },
     saveDonation: async (parent, { newDonation }, context) => {
-      console.log(newDonation);
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },

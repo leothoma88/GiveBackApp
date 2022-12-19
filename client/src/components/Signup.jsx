@@ -36,11 +36,10 @@ function Signup(props) {
       <h1 className="text-5xl md:text-5xl sm:text-4xl font-bold p-6">Create New Account</h1>
       <div className="flex flex-row place-content-center mb-12">
         <div className="flex p-5">
-          <div className="start bg-red-400 w-4/5 border-bg-black rounded-2xl">
-            <div className="card p-8 m-5 border-2 bg-red-300 rounded-2xl">
+        <div className="p-8 m-5 border-2 bg-[#191f3d] border-[#191f3d] rounded-2xl w-[20rem] sm:w-[20rem] md:w-[40rem] lg:w-[40rem]">
               <form className="form login-form" onSubmit={handleFormSubmit}>
                 <div className="form-group">
-                  <label className="form-label" htmlFor="userName">
+                  <label className="form-label text-[#FCFFE7] text-lg" htmlFor="userName">
                     Username:
                   </label>
                   <input
@@ -53,7 +52,7 @@ function Signup(props) {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="emailInput">Email:</label>
+                  <label className="text-[#FCFFE7] text-lg" htmlFor="emailInput">Email:</label>
                   <input
                     className="block w-full form-input form-control"
                     placeholder="yourEmail@here.com"
@@ -64,7 +63,7 @@ function Signup(props) {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="password">Password:</label>
+                  <label className="text-[#FCFFE7] text-lg" htmlFor="password">Password:</label>
                   <input
                     className="block w-full form-input form-control"
                     placeholder="******"
@@ -76,7 +75,7 @@ function Signup(props) {
                 </div>
                 <div className="BtnSpace">
                   <button
-                    className="submitBtn btn-primary border-2 bg-white p-3 m-5 rounded-2xl hover:bg-amber-500"
+                    className="submitBtn btn-primary border-2 bg-[#df3e56] border-[#FCFFE7] text-[#FCFFE7] text-lg w-[50%] h-fit p-2 mt-8 rounded-xl hover:bg-teal-600"
                     type="submit"
                   >
                     Submit
@@ -84,7 +83,6 @@ function Signup(props) {
                 </div>
               </form>
             </div>
-          </div>
           </div>
         </div>
       </div>

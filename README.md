@@ -1,31 +1,11 @@
 # The GiveBack App
 
-This fullstack MERN project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Local Usability
-
-First, download the code to your machine, open your terminal and run:
-
-### `npm install`
-
-This will install all of the dependencies used in this application. 
-
-Then still inside the terminal, run:
-
-### `npm run build`
-
-This builds the app for production and will open the app in the development mode.
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-
-
-## User story:
-- AS a user I want to be able to donate to charities and non-profit organizations of my choice.
-- AS a user I want to be able to save my favorite charities for easier access.
-- AS a user I want to be able to submit my non-profit organization.
-
-
-## User Experience:
+## Expected Outcome: 
+- The User will be able to sign up or login to app
+- The User will be able to search for non-profit organizations
+- The User will be able to make a payment to the selected non-profit organizations once clicked upon
+- The User will be able to save non-profit organizations to their profile
+- The User will be able to contact GiveBack with new non-profti organizations to be added to the GiveBack database
 
 
 

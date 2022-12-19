@@ -26,6 +26,7 @@
   "dependencies": {
     "@apollo/datasource-rest": "^4.3.2",
     "node-fetch": "^3.3.0",
-    "react-script-tag": "^1.1.2"
+    "react-script-tag": "^1.1.2",
+    "stripe": "^11.4.0"
   }
 }

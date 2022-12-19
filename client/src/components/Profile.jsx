@@ -19,7 +19,7 @@ const Profile = () => {
         ) : (
           <>
             {data?.me?.savedDonations?.map((donation) => {
-              return <Card {...donation} />;
+              return <Card {...donation} key={donation.ein}/>;
             })}
           </>
         )}

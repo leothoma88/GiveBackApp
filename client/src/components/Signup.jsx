@@ -31,9 +31,10 @@ function Signup(props) {
 
 
   return (
-    <div>
-      <h1 className="signup text-3xl font-bold">Signup Here:</h1>
-      <div className="flex ml-20 place-content-center">
+    <div className="flex flex-col justify-center w-full h-full bg-[#df3e56]">
+        <div className="w-full mx-auto text-center text-[#FCFFE7] bg-[#df3e56] pt-12">
+      <h1 className="text-5xl md:text-5xl sm:text-4xl font-bold p-6">Create New Account</h1>
+      <div className="flex flex-row place-content-center mb-12">
         <div className="flex p-5">
           <div className="start bg-red-400 w-4/5 border-bg-black rounded-2xl">
             <div className="card p-8 m-5 border-2 bg-red-300 rounded-2xl">
@@ -83,6 +84,7 @@ function Signup(props) {
                 </div>
               </form>
             </div>
+          </div>
           </div>
         </div>
       </div>

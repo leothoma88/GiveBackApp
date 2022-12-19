@@ -7,6 +7,8 @@ const creds = require("./config/mailerConfig");
 const db = require("./config/connection");
 const { ApolloServer } = require("apollo-server-express");
 const { authMiddleware } = require("./utils/auth");
+const env = require("dotenv").config({ path: "./.env" });
+
 
 router.post("/send", async (req, res) => {
   console.log("TRY");
@@ -63,9 +65,41 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 }
 
+
 const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
   server.applyMiddleware({ app });
+
+  const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: "2022-08-01"
+  });
+  
+  app.get("/config", (req, res) => {
+    console.log("////////", process.env.STRIPE_PUBLISHABLE_KEY)
+    res.send({
+      publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+    });
+  });
+
+  app.post("/create-payment-intent", async(req, res) => {
+    console.log("reeeeq",req.body)
+    try {
+       const paymentIntent = await stripe.paymentIntents.create ({
+      currency: 'USD',
+      amount: req.body?.amount || 0,
+      automatic_payment_methods: {
+        enabled: true,
+      },
+    });
+    res.send({ clientSecret: paymentIntent.client_secret });
+  } catch (e) {
+    return res.status(400).send({
+      error: {
+        message: e.message,
+      },
+    })
+  }
+  });
 
   db.once("open", () => {
     app.listen(PORT, () => {

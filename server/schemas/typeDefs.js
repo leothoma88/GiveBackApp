@@ -55,11 +55,12 @@ const typeDefs = gql`
     name: String
     description: String
     coverImageUrl: String
+    ein: String
   }
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    removeDonation(charityId: ID): User
+    removeDonation(ein: ID): User
     saveDonation(newDonation: DonationInput!): User
   }
 `;

@@ -18,6 +18,7 @@ export const SAVE_DONATION = gql`
       _id
       username
       savedDonations {
+        ein
         name
         description
         coverImageUrl
@@ -39,11 +40,16 @@ export const LOGIN_USER = gql`
 `;
 
 export const REMOVE_DONATION = gql`
-  mutation removeDonation($charityId: ID!) {
-    removeDonation(charityId: $charityId) {
+  mutation removeDonation($ein: ID!) {
+    removeDonation(ein: $ein) {
       _id
       username
-      savedDonations
+      savedDonations {
+        ein
+        name
+        description
+        coverImageUrl
+      }
     }
   }
 `;

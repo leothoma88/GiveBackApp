@@ -15,7 +15,7 @@ function CharitiesBuilder({setCharitiesToShow}) {
    
     const [charities,setCharities] = useState([])
     const [search,setSearch] = useState("charity")
-    const[doSearch ,{loading,data}] =useLazyQuery(QUERY_SEARCH, {
+    const[doSearch ,{loading,data}] = useLazyQuery(QUERY_SEARCH, {
         variables: { searchTerm: search },
       })
     

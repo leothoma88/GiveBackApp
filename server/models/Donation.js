@@ -19,6 +19,9 @@ const donationSchema = new Schema({
   link: {
     type: String,
   },
+  ein: {
+    type: String,
+  },
 });
 
 //const Donation = model('Donation', donationSchema);

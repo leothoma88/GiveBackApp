@@ -2,16 +2,20 @@
 import { DonateBtn } from "./DonateBtn";
 import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
-import { QUERY_SEARCH } from "../utils/queries";
+import { QUERY_SEARCH, QUERY_ME } from "../utils/queries";
 import { SAVE_DONATION, REMOVE_DONATION } from "../utils/mutations";
 import { useEffect } from "react";
+import Payment from "./Payment";
+import SaveBtn from "./SaveBtn";
+
 
 // import  { Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Button } from "@mui/material";
 
 import { Modal, Box, Typography, Button } from "@mui/material";
 
+
 // class Cards extends Component {
-function Cards({ name, description, coverImageUrl, ein }) {
+function Cards({ name, description, coverImageUrl, ein, charityId }) {
 
   // useEffect(() => {
   //   const script = document.createElement("script");
@@ -33,12 +37,31 @@ function Cards({ name, description, coverImageUrl, ein }) {
   const [saveDonation, { error }] = useMutation(SAVE_DONATION);
   const [removeDonation, { err }] = useMutation(REMOVE_DONATION);
   const donationData = data?.search || {};
+  const { loading: loadingSavedDonations, data: savedDonations } = useQuery(QUERY_ME);
+
 
   const handleSave = async () => {
-    const inp = { name, description, coverImageUrl };
-    const { data } = await saveDonation({
-      variables: { data: inp },
-    });
+    const inp = { name, description, coverImageUrl, ein };
+    let alreadyAdded = false;
+    let idExisted = '';
+    console.log('super',ein)
+    savedDonations?.me?.savedDonations?.map((donation) => {
+      //console.log('loki', donation)
+      if(donation.name == inp.name){
+        alreadyAdded = true
+        idExisted = donation.ein
+      }
+    })
+    if(!alreadyAdded){
+      const { data } = await saveDonation({
+        variables: { data: inp },
+      });
+
+    }
+    else{
+      const { data } = await removeDonation({ variables: { ein: idExisted }})
+    }
+
 
     console.log(data);
   };
@@ -66,21 +89,25 @@ function Cards({ name, description, coverImageUrl, ein }) {
           <p className="font-bold text-xl mb-2 text-[#191f3d]">{name}</p>
           <p className="text-[#191f3d] text-base">{description}</p>
         </div>
-        <DonateBtn
+        {ein && (
+          <div className="grid grid-cols-2">
+          <DonateBtn
           onClickBtn={() => {
-            window.open(`https://www.every.org/${ein}#donate`)
             setShowModal(true);
           }}
           ein={ein}
         />
+        <SaveBtn onClickBtn={handleSave} />
+          </div>
+        )}
         <Modal
           open={showModal}
           onClose={handleClose}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box className="absolute w-[60%] md:max-h-screen md:max-w-xl bg-amber-100 rounded-lg p-6  mt-10 ml-12">
-            <img
+          <Box className="absolute w-[65%] md:max-h-screen bg-amber-100 rounded-lg p-8 mt-12 ml-14">
+            {/* <img
               className="w-[85%] ml-[7%] mr-[10%] rounded-lg"
               src={coverImageUrl}
               alt=""
@@ -99,7 +126,13 @@ function Cards({ name, description, coverImageUrl, ein }) {
             </Typography>
             <Button onClick={handleClose}>Cancel</Button>
             <Button onClick={handleClose}>Donate</Button>
-            <Button onClick={handleSave}>Save</Button>
+            <Button onClick={handleSave}>Save</Button> */}
+
+            <Payment 
+            name={name}
+            description={description}
+            coverImageUrl={coverImageUrl}
+            ein={ein}></Payment>
           </Box>
         </Modal>
       </div>

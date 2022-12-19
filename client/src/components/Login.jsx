@@ -93,7 +93,7 @@ const LoginForm = () => {
                     Not registered yet?
                   </p>
                   <Link
-                    className="loginBtn btn-primary border-2 bg-[#df3e56] border-[#FCFFE7] text-[#FCFFE7] text-lg w-[50%] h-fit p-2 rounded-xl hover:bg-amber-500"
+                    className="loginBtn btn-primary border-2 bg-[#df3e56] border-[#FCFFE7] text-[#FCFFE7] text-lg w-[50%] h-fit p-2 rounded-xl hover:bg-teal-600"
                     to="/signup"
                   >
                     Create a new account!

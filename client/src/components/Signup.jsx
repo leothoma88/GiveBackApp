@@ -43,7 +43,7 @@ function Signup(props) {
                     Username:
                   </label>
                   <input
-                    className="block w-full form-input form-control"
+                    className="block w-full form-input form-control text-[#191f3d]"
                     placeholder="Full Name"
                     name="username"
                     type="username"
@@ -54,7 +54,7 @@ function Signup(props) {
                 <div className="form-group">
                   <label className="text-[#FCFFE7] text-lg" htmlFor="emailInput">Email:</label>
                   <input
-                    className="block w-full form-input form-control"
+                    className="block w-full form-input form-control text-[#191f3d]"
                     placeholder="yourEmail@here.com"
                     name="email"
                     type="email"
@@ -65,7 +65,7 @@ function Signup(props) {
                 <div className="form-group">
                   <label className="text-[#FCFFE7] text-lg" htmlFor="password">Password:</label>
                   <input
-                    className="block w-full form-input form-control"
+                    className="block w-full form-input form-control text-[#191f3d]"
                     placeholder="******"
                     name="password"
                     type="password"
